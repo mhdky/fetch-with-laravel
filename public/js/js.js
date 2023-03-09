@@ -5,19 +5,41 @@ function getPostData() {
         .then(data => {
             let posts = data.posts;
             let output = '';
-
+            
             posts.forEach(post => {
-                output += `
-                    <div class="mb-5 pb-2 border-b border-zinc-400">
-                        <h1 class="text-xl font-medium">${post.title}</h1>
-                        <p class="mt-2 text-sm">${post.author}</p>
-                        <p class="mt-2">${post.excerpt}</p>
-                    </div>
-                ` 
-            });
+                // Membuat elemen judul post
+                const titleEl = document.createElement('h1');
+                const titleText = document.createTextNode(post.title);
+                titleEl.classList.add('text-xl', 'font-medium');
+                titleEl.appendChild(titleText);
 
-            postList.innerHTML = output;
+                // Membuat elemen penulis post
+                const authorEl = document.createElement('p');
+                const authorText = document.createTextNode(post.author);
+                authorEl.classList.add('mt-2', 'text-sm');
+                authorEl.appendChild(authorText);
+
+                // Membuat elemen kutipan post
+                const excerptEl = document.createElement('p');
+                const excerptText = document.createTextNode(post.excerpt);
+                excerptEl.classList.add('mt-2');
+                excerptEl.appendChild(excerptText);
+
+                // Membuat elemen utama untuk post dan menambahkan elemen judul, penulis, dan kutipan ke dalamnya
+                const postEl = document.createElement('div');
+                postEl.classList.add('mb-5', 'pb-2', 'border-b', 'border-zinc-400');
+                postEl.appendChild(titleEl);
+                postEl.appendChild(authorEl);
+                postEl.appendChild(excerptEl);
+
+                // Menambahkan elemen utama post ke dalam postList
+                postList.appendChild(postEl);
+            });
         })
 }
 
 getPostData();
+
+setInterval(() => {
+    getPostData();
+}, 5000);
