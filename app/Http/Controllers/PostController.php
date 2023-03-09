@@ -8,10 +8,15 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
     public function index() {
         return view('post.index', [
-            'title' => 'Post',
-            'posts' => Post::latest()->get()
-        ]);
+            'title' => 'Post'
+        ]); 
+    }
+
+    public function data() {
+        $posts = Post::latest()->get();
+        return response()->json(['posts' => $posts]);
     }
 }
