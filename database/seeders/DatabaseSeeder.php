@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Post::factory(20)->create();
+        Post::factory(50)->create();
 
         Category::create([
             'name' => 'Laravel',

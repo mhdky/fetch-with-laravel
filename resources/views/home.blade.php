@@ -55,9 +55,8 @@
 
 
 
-          // Menyeleksi input pencarian pada tampilan mobile dengan menggunakan querySelector
+    // Menyeleksi input pencarian pada tampilan mobile dengan menggunakan querySelector
     const searchMobile = document.querySelector('#search-mobile');
-
     // Menambahkan event listener pada input pencarian
     searchMobile.addEventListener('keyup', function() {
         const query = this.value;
