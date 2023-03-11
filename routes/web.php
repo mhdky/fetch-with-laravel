@@ -33,3 +33,5 @@ Route::post('/dashboard/post', [DashboardPostController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::post('/dashboard', [DashboardController::class, 'store']);
 Route::delete('/dashboard/{post:id}', [DashboardController::class, 'destroy']);
+Route::get('/dashboard/{post:id}', [DashboardController::class, 'edit']);
+Route::put('/dashboard/{post:id}', [DashboardController::class, 'update']);

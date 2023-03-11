@@ -37,4 +37,22 @@ class DashboardController extends Controller
             'message' => 'Post berhasil dihapus'
         ]);
     }
+
+    public function edit(Post $post) {
+        return response()->json($post);
+    }
+
+    public function update(Request $request, Post $post) {
+        $validateData = $request->validate([
+            'category_id' => 'required|max:254',
+            'title' => 'required|min:3|max:254',
+            'slug' => 'required|min:3|max:254',
+            'author' => 'required|min:3|max:254',
+            'excerpt' => 'required|min:3|max:254',
+        ]);
+
+        Post::where('id', $post->id)->update($validateData);
+
+        return redirect('/dashboard')->with('okupdate', 'Data berhasil diupdate');
+    }
 }
